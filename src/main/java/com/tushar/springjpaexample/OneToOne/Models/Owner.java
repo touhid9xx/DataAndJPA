@@ -3,14 +3,13 @@ package com.tushar.springjpaexample.OneToOne.Models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Owner")
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Owner {
 
     @Id
@@ -20,4 +19,19 @@ public class Owner {
     @OneToOne
     @JoinColumn(name = "car_id", referencedColumnName = "id")
     private Car car;
+
+    public Owner() {
+    }
+
+    public Owner(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Owner{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
