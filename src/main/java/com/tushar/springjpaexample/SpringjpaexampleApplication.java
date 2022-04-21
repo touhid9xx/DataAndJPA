@@ -1,5 +1,9 @@
 package com.tushar.springjpaexample;
 
+import com.tushar.springjpaexample.OneToManyUnidirectional.model.Student;
+import com.tushar.springjpaexample.OneToManyUnidirectional.model.University;
+import com.tushar.springjpaexample.OneToManyUnidirectional.repository.StudentRepository;
+import com.tushar.springjpaexample.OneToManyUnidirectional.repository.UniversityRepository;
 import com.tushar.springjpaexample.OneToOneBidirectional.Models.Car;
 import com.tushar.springjpaexample.OneToOneBidirectional.Models.Owner;
 import com.tushar.springjpaexample.OneToOneBidirectional.Repository.CarRepository;
@@ -13,6 +17,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 @SpringBootApplication @Slf4j
@@ -22,33 +28,17 @@ public class SpringjpaexampleApplication {
 		ConfigurableApplicationContext configurableApplicationContext =
 		SpringApplication.run(SpringjpaexampleApplication.class, args);
 
-//		CarRepository carRepository = configurableApplicationContext.getBean(CarRepository.class);
-//		OwnerRepository ownerRepository = configurableApplicationContext.getBean(OwnerRepository.class);
-//
-//		Car car = new Car("m001");
-//		carRepository.save(car);
-//
-//		Owner owner = new Owner("Tushar");
-//		owner.setCar(car);
-//		ownerRepository.save(owner);
-//
-//
-//		Optional<Car> optionalCar = carRepository.findById(1L);
-//		Optional<Owner> optionalOwner = ownerRepository.findById(2L);
-//
-//		if(optionalCar.isPresent() && optionalOwner.isPresent()) {
-//			log.info(optionalCar.get() + " is ownd by" + optionalCar.get().getOwner());
-//			log.info(optionalOwner.get()+ " has a car" + optionalOwner.get().getCar());
-//		}
+		StudentRepository studentRepository = configurableApplicationContext.getBean(StudentRepository.class);
+		UniversityRepository universityRepository = configurableApplicationContext.getBean(UniversityRepository.class);
 
-		AddressRepository addressRepository = configurableApplicationContext.getBean(AddressRepository.class);
-		UserRepository userRepository = configurableApplicationContext.getBean(UserRepository.class);
+		Student std1 = new Student("1111");
+		Student std2 = new Student("1112");
+		List<Student> students = Arrays.asList(std1,std2);
 
-		Address address = new Address("street");
-		addressRepository.save(address);
+		University university = new University("Tushar", students);
 
-		User user = new User("tushar",address);
-		userRepository.save(user);
+		universityRepository.save(university);
+
 
 	}
 
