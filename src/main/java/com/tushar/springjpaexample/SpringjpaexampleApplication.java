@@ -20,6 +20,11 @@ import com.tushar.springjpaexample.OneToOneUnidirectional.model.Address;
 import com.tushar.springjpaexample.OneToOneUnidirectional.model.User;
 import com.tushar.springjpaexample.OneToOneUnidirectional.repository.AddressRepository;
 import com.tushar.springjpaexample.OneToOneUnidirectional.repository.UserRepository;
+import com.tushar.springjpaexample.mappedSuperClass.model.Tank;
+import com.tushar.springjpaexample.mappedSuperClass.model.Truck;
+import com.tushar.springjpaexample.mappedSuperClass.repository.TankRepository;
+import com.tushar.springjpaexample.mappedSuperClass.repository.TruckRepository;
+import com.tushar.springjpaexample.mappedSuperClass.repository.VehicleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -58,26 +63,36 @@ public class SpringjpaexampleApplication {
 //		cart.setItems(items);
 //		cartRepository.save(cart);
 
-		StreamRepository streamRepository = configurableApplicationContext.getBean(StreamRepository.class);
-		ViewerRepository viewerRepository = configurableApplicationContext.getBean(ViewerRepository.class);
+//		StreamRepository streamRepository = configurableApplicationContext.getBean(StreamRepository.class);
+//		ViewerRepository viewerRepository = configurableApplicationContext.getBean(ViewerRepository.class);
+//
+//		Viewer tusharViewer = new Viewer("Tushar");
+//		Viewer bijayViewer = new Viewer("Bijay");
+//		Viewer rubyViewer = new Viewer("Ruby");
+//
+//		List<Viewer> viewers = Arrays.asList(tusharViewer,bijayViewer,rubyViewer);
+//
+//		Stream cookingStream = new Stream("CookingIsAwesome");
+//		Stream gamingStream = new Stream("ChillGaming");
+//
+//		List<Stream> streams = Arrays.asList(cookingStream,gamingStream);
+//		streamRepository.saveAll(streams);
+//
+//		tusharViewer.followedStream(cookingStream);
+//		bijayViewer.followedStream(gamingStream);
+//		rubyViewer.followedStream(cookingStream);
+//
+//		viewerRepository.saveAll(viewers);
 
-		Viewer tusharViewer = new Viewer("Tushar");
-		Viewer bijayViewer = new Viewer("Bijay");
-		Viewer rubyViewer = new Viewer("Ruby");
 
-		List<Viewer> viewers = Arrays.asList(tusharViewer,bijayViewer,rubyViewer);
+		VehicleRepository tankRepository = configurableApplicationContext.getBean(TankRepository.class);
+		VehicleRepository truckRepository = configurableApplicationContext.getBean(TruckRepository.class);
 
-		Stream cookingStream = new Stream("CookingIsAwesome");
-		Stream gamingStream = new Stream("ChillGaming");
+		Tank myTank = new Tank("T-150",5,50);
+		Truck myTruck = new Truck("200M",2,36,true);
 
-		List<Stream> streams = Arrays.asList(cookingStream,gamingStream);
-		streamRepository.saveAll(streams);
-
-		tusharViewer.followedStream(cookingStream);
-		bijayViewer.followedStream(gamingStream);
-		rubyViewer.followedStream(cookingStream);
-
-		viewerRepository.saveAll(viewers);
+		tankRepository.save(myTank);
+		truckRepository.save(myTruck);
 	}
 
 }
