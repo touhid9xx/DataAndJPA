@@ -1,5 +1,9 @@
 package com.tushar.springjpaexample;
 
+import com.tushar.springjpaexample.ManyToMany.model.Stream;
+import com.tushar.springjpaexample.ManyToMany.model.Viewer;
+import com.tushar.springjpaexample.ManyToMany.repository.StreamRepository;
+import com.tushar.springjpaexample.ManyToMany.repository.ViewerRepository;
 import com.tushar.springjpaexample.OneToManyBidirectional.model.Cart;
 import com.tushar.springjpaexample.OneToManyBidirectional.model.Item;
 import com.tushar.springjpaexample.OneToManyBidirectional.repository.CartRepository;
@@ -43,20 +47,37 @@ public class SpringjpaexampleApplication {
 //
 //		universityRepository.save(university);
 
-		CartRepository cartRepository = configurableApplicationContext.getBean(CartRepository.class);
-		ItemRepository itemRepository = configurableApplicationContext.getBean(ItemRepository.class);
+//		CartRepository cartRepository = configurableApplicationContext.getBean(CartRepository.class);
+//		ItemRepository itemRepository = configurableApplicationContext.getBean(ItemRepository.class);
+//
+//		Cart cart = new Cart("999");
+//		Item chocolate = new Item("SE123", cart);
+//		Item shampoo = new Item("SE122", cart);
+//
+//		List<Item> items = Arrays.asList(chocolate, shampoo);
+//		cart.setItems(items);
+//		cartRepository.save(cart);
 
-		Cart cart = new Cart("999");
-		Item chocolate = new Item("SE123", cart);
-		Item shampoo = new Item("SE122", cart);
+		StreamRepository streamRepository = configurableApplicationContext.getBean(StreamRepository.class);
+		ViewerRepository viewerRepository = configurableApplicationContext.getBean(ViewerRepository.class);
 
-		List<Item> items = Arrays.asList(chocolate, shampoo);
-		cart.setItems(items);
-		cartRepository.save(cart);
+		Viewer tusharViewer = new Viewer("Tushar");
+		Viewer bijayViewer = new Viewer("Bijay");
+		Viewer rubyViewer = new Viewer("Ruby");
 
+		List<Viewer> viewers = Arrays.asList(tusharViewer,bijayViewer,rubyViewer);
 
+		Stream cookingStream = new Stream("CookingIsAwesome");
+		Stream gamingStream = new Stream("ChillGaming");
 
+		List<Stream> streams = Arrays.asList(cookingStream,gamingStream);
+		streamRepository.saveAll(streams);
 
+		tusharViewer.followedStream(cookingStream);
+		bijayViewer.followedStream(gamingStream);
+		rubyViewer.followedStream(cookingStream);
+
+		viewerRepository.saveAll(viewers);
 	}
 
 }
