@@ -1,5 +1,12 @@
 package com.tushar.springjpaexample;
 
+import com.tushar.springjpaexample.InheriteJoinTable.Enums.InfantryType;
+import com.tushar.springjpaexample.InheriteJoinTable.model.Archer;
+import com.tushar.springjpaexample.InheriteJoinTable.model.Infantry;
+import com.tushar.springjpaexample.InheriteJoinTable.model.Knight;
+import com.tushar.springjpaexample.InheriteJoinTable.repository.ArcherRepository;
+import com.tushar.springjpaexample.InheriteJoinTable.repository.InfantryRepository;
+import com.tushar.springjpaexample.InheriteJoinTable.repository.KnightRepository;
 import com.tushar.springjpaexample.InheriteSingleTable.Enum.Material;
 import com.tushar.springjpaexample.InheriteSingleTable.Enum.PaintingTechnique;
 import com.tushar.springjpaexample.InheriteSingleTable.model.ArtPiece;
@@ -102,14 +109,24 @@ public class SpringjpaexampleApplication {
 //		tankRepository.save(myTank);
 //		truckRepository.save(myTruck);
 
-		ArtPieceRepository paintingRepository = configurableApplicationContext.getBean(PaintingRepository.class);
-		ArtPieceRepository scluptureRepository = configurableApplicationContext.getBean(SclulptureRepository.class);
+//		ArtPieceRepository paintingRepository = configurableApplicationContext.getBean(PaintingRepository.class);
+//		ArtPieceRepository scluptureRepository = configurableApplicationContext.getBean(SclulptureRepository.class);
+//
+//		ArtPiece sculpure = new Sculpture("Tushar", Material.WOOD,200.2);
+//		ArtPiece painting = new Painting("Tom smith", PaintingTechnique.OIL, 25.5, 55.5);
+//
+//		scluptureRepository.save(sculpure);
+//		paintingRepository.save(painting);
 
-		ArtPiece sculpure = new Sculpture("Tushar", Material.WOOD,200.2);
-		ArtPiece painting = new Painting("Tom smith", PaintingTechnique.OIL, 25.5, 55.5);
 
-		scluptureRepository.save(sculpure);
-		paintingRepository.save(painting);
+		InfantryRepository archorRepository = configurableApplicationContext.getBean(ArcherRepository.class);
+		InfantryRepository knightRepository = configurableApplicationContext.getBean(KnightRepository.class);
+
+		Infantry archer = new Archer(InfantryType.LIGHT,300,500,100,1000);
+		Infantry knight = new Knight(InfantryType.HEAVY,200,200,100,true);
+
+		archorRepository.save(archer);
+		knightRepository.save(knight);
 	}
 
 }
