@@ -1,5 +1,9 @@
 package com.tushar.springjpaexample;
 
+import com.tushar.springjpaexample.OneToManyBidirectional.model.Cart;
+import com.tushar.springjpaexample.OneToManyBidirectional.model.Item;
+import com.tushar.springjpaexample.OneToManyBidirectional.repository.CartRepository;
+import com.tushar.springjpaexample.OneToManyBidirectional.repository.ItemRepository;
 import com.tushar.springjpaexample.OneToManyUnidirectional.model.Student;
 import com.tushar.springjpaexample.OneToManyUnidirectional.model.University;
 import com.tushar.springjpaexample.OneToManyUnidirectional.repository.StudentRepository;
@@ -28,16 +32,29 @@ public class SpringjpaexampleApplication {
 		ConfigurableApplicationContext configurableApplicationContext =
 		SpringApplication.run(SpringjpaexampleApplication.class, args);
 
-		StudentRepository studentRepository = configurableApplicationContext.getBean(StudentRepository.class);
-		UniversityRepository universityRepository = configurableApplicationContext.getBean(UniversityRepository.class);
+//		StudentRepository studentRepository = configurableApplicationContext.getBean(StudentRepository.class);
+//		UniversityRepository universityRepository = configurableApplicationContext.getBean(UniversityRepository.class);
+//
+//		Student std1 = new Student("1111");
+//		Student std2 = new Student("1112");
+//		List<Student> students = Arrays.asList(std1,std2);
+//
+//		University university = new University("Tushar", students);
+//
+//		universityRepository.save(university);
 
-		Student std1 = new Student("1111");
-		Student std2 = new Student("1112");
-		List<Student> students = Arrays.asList(std1,std2);
+		CartRepository cartRepository = configurableApplicationContext.getBean(CartRepository.class);
+		ItemRepository itemRepository = configurableApplicationContext.getBean(ItemRepository.class);
 
-		University university = new University("Tushar", students);
+		Cart cart = new Cart("999");
+		Item chocolate = new Item("SE123", cart);
+		Item shampoo = new Item("SE122", cart);
 
-		universityRepository.save(university);
+		List<Item> items = Arrays.asList(chocolate, shampoo);
+		cart.setItems(items);
+		cartRepository.save(cart);
+
+
 
 
 	}
