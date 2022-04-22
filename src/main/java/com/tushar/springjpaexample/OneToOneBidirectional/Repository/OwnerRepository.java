@@ -1,7 +1,7 @@
-package com.tushar.springjpaexample.OneToOne.Repository;
+package com.tushar.springjpaexample.OneToOneBidirectional.Repository;
 
 
-import com.tushar.springjpaexample.OneToOne.Models.Owner;
+import com.tushar.springjpaexample.OneToOneBidirectional.Models.Owner;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

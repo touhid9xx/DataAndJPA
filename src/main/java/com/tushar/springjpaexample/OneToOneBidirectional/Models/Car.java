@@ -1,8 +1,6 @@
-package com.tushar.springjpaexample.OneToOne.Models;
+package com.tushar.springjpaexample.OneToOneBidirectional.Models;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
