@@ -1,5 +1,13 @@
 package com.tushar.springjpaexample;
 
+import com.tushar.springjpaexample.InheriteSingleTable.Enum.Material;
+import com.tushar.springjpaexample.InheriteSingleTable.Enum.PaintingTechnique;
+import com.tushar.springjpaexample.InheriteSingleTable.model.ArtPiece;
+import com.tushar.springjpaexample.InheriteSingleTable.model.Painting;
+import com.tushar.springjpaexample.InheriteSingleTable.model.Sculpture;
+import com.tushar.springjpaexample.InheriteSingleTable.repository.ArtPieceRepository;
+import com.tushar.springjpaexample.InheriteSingleTable.repository.PaintingRepository;
+import com.tushar.springjpaexample.InheriteSingleTable.repository.SclulptureRepository;
 import com.tushar.springjpaexample.ManyToMany.model.Stream;
 import com.tushar.springjpaexample.ManyToMany.model.Viewer;
 import com.tushar.springjpaexample.ManyToMany.repository.StreamRepository;
@@ -85,14 +93,23 @@ public class SpringjpaexampleApplication {
 //		viewerRepository.saveAll(viewers);
 
 
-		VehicleRepository tankRepository = configurableApplicationContext.getBean(TankRepository.class);
-		VehicleRepository truckRepository = configurableApplicationContext.getBean(TruckRepository.class);
+//		VehicleRepository tankRepository = configurableApplicationContext.getBean(TankRepository.class);
+//		VehicleRepository truckRepository = configurableApplicationContext.getBean(TruckRepository.class);
+//
+//		Tank myTank = new Tank("T-150",5,50);
+//		Truck myTruck = new Truck("200M",2,36,true);
+//
+//		tankRepository.save(myTank);
+//		truckRepository.save(myTruck);
 
-		Tank myTank = new Tank("T-150",5,50);
-		Truck myTruck = new Truck("200M",2,36,true);
+		ArtPieceRepository paintingRepository = configurableApplicationContext.getBean(PaintingRepository.class);
+		ArtPieceRepository scluptureRepository = configurableApplicationContext.getBean(SclulptureRepository.class);
 
-		tankRepository.save(myTank);
-		truckRepository.save(myTruck);
+		ArtPiece sculpure = new Sculpture("Tushar", Material.WOOD,200.2);
+		ArtPiece painting = new Painting("Tom smith", PaintingTechnique.OIL, 25.5, 55.5);
+
+		scluptureRepository.save(sculpure);
+		paintingRepository.save(painting);
 	}
 
 }
