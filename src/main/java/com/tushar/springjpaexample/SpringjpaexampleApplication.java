@@ -15,6 +15,12 @@ import com.tushar.springjpaexample.InheriteSingleTable.model.Sculpture;
 import com.tushar.springjpaexample.InheriteSingleTable.repository.ArtPieceRepository;
 import com.tushar.springjpaexample.InheriteSingleTable.repository.PaintingRepository;
 import com.tushar.springjpaexample.InheriteSingleTable.repository.SclulptureRepository;
+import com.tushar.springjpaexample.InheriteTablePerClass.model.FireSpell;
+import com.tushar.springjpaexample.InheriteTablePerClass.model.FrostSpell;
+import com.tushar.springjpaexample.InheriteTablePerClass.model.Spell;
+import com.tushar.springjpaexample.InheriteTablePerClass.repository.FireSpellRepository;
+import com.tushar.springjpaexample.InheriteTablePerClass.repository.FrostSpellRepository;
+import com.tushar.springjpaexample.InheriteTablePerClass.repository.SpellRepository;
 import com.tushar.springjpaexample.ManyToMany.model.Stream;
 import com.tushar.springjpaexample.ManyToMany.model.Viewer;
 import com.tushar.springjpaexample.ManyToMany.repository.StreamRepository;
@@ -119,14 +125,32 @@ public class SpringjpaexampleApplication {
 //		paintingRepository.save(painting);
 
 
-		InfantryRepository archorRepository = configurableApplicationContext.getBean(ArcherRepository.class);
-		InfantryRepository knightRepository = configurableApplicationContext.getBean(KnightRepository.class);
+//		InfantryRepository archorRepository = configurableApplicationContext.getBean(ArcherRepository.class);
+//		InfantryRepository knightRepository = configurableApplicationContext.getBean(KnightRepository.class);
+//
+//		Infantry archer = new Archer(InfantryType.LIGHT,300,500,100,1000);
+//		Infantry knight = new Knight(InfantryType.HEAVY,200,200,100,true);
+//
+//		archorRepository.save(archer);
+//		knightRepository.save(knight);
 
-		Infantry archer = new Archer(InfantryType.LIGHT,300,500,100,1000);
-		Infantry knight = new Knight(InfantryType.HEAVY,200,200,100,true);
+//		SpellRepository spellRepository = configurableApplicationContext.getBean(SpellRepository.class);
+//		SpellRepository fireSpellRepository = configurableApplicationContext.getBean(FireSpellRepository.class);
+//		SpellRepository frostSpellRepository = configurableApplicationContext.getBean(FrostSpellRepository.class);
+//
+//
+//		Spell archaneSpart = new Spell("ArcanSpark",50,60);
+//		Spell fireBall = new FireSpell("FireBall",100,100,100,2000);
+//		Spell meteorShower = new FireSpell("MeteorShower",200,200,150,3000);
+//
+//		Spell frostBolt = new FrostSpell("FrostBolt",80,80,true,200);
+//
+//		spellRepository.save(archaneSpart);
+//		fireSpellRepository.save(fireBall);
+//		fireSpellRepository.save(meteorShower);
+//
+//		frostSpellRepository.save(frostBolt);
 
-		archorRepository.save(archer);
-		knightRepository.save(knight);
 	}
 
 }
